@@ -7,15 +7,13 @@ console.log('Funções')
 
 // FUNÇÕES
 // Possuímos as funções: falar, dobro, calcularMedia
-function falar() {
-  return 'Pipipi popopo'
-}
+const falar =  () => 'Pipipi popopo'
+//arrow function com uma linha sem chaves e sem return
 
-function dobro(num) {
-  return num * 2
-}
+const dobro = (num) => num * 2
 
-function calcularMedia(nota1, nota2, nota3) {
+
+const calcularMedia = function(nota1, nota2, nota3) {
   const soma = (nota1 + nota2 + nota3)
   const media = soma / 3
   return media
@@ -23,7 +21,7 @@ function calcularMedia(nota1, nota2, nota3) {
 
 // Vamos refatorar essas funções para a sintaxe de Arrow function
 
-
+// fiz lá em cima, estava dando erro ao rodar duas vezes...
 
 
 
@@ -33,81 +31,71 @@ console.log('Callback')
 
 // CALLBACK
 // Possuímos as funções: somar, subtrair, multiplicar e dividir.
-function somar(a, b) {
-  return a + b
-}
+const somar = (a, b) => a + b
 
-function subtrair(a, b) {
-  return a - b
-}
 
-function multiplicar(a, b) {
-  return a * b
-}
+const subtrair = (a, b) =>  a - b
 
-function dividir(a, b) {
-  return a / b
-}
 
-function ordenar(a, b) {
-  if (a <= b) {
-    return [a, b]
-  } else {
-    return [b, a]
-  }
-}
+const multiplicar = (a, b) => a * b
 
+
+const dividir = (a, b) => a / b
+
+
+const ordenar = (a, b) => (a <= b) ? [a, b] : [b, a]
 
 // Crie uma função chamada calcular que receberá como parâmetro: dois números e uma função de callback
 
-
-
-
+function calcular(n1, n2, callback) {
+  return callback(n1, n2)
+}
 
 
 
 // Faça a soma de dois números usando a função calcular
 
+const resultadoSoma = calcular(3,5, somar)
 
-
-
+console.log(`A soma de 3 com 5 é: ${resultadoSoma}`)
 
 
 
 // Faça a subtração de dois números usando a função calcular
 
+const resultadoSubtracao = calcular(10,4, subtrair)
 
-
-
-
+console.log(`A subtração de 10 e 4 é: ${resultadoSubtracao}`)
 
 
 // Faça a multiplicação de dois números usando a função calcular
 
+const resultadoMult = calcular(2,8, multiplicar)
 
-
-
-
+console.log(`A multiplicação entre 2 e 8 é: ${resultadoMult}`)
 
 
 // Faça a divisão de dois números usando a função calcular
 
+const resultadoDivisao = calcular(100,5, dividir)
 
-
+console.log(`A divisão entre 100 e 5 é: ${resultadoDivisao}`)
 
 
 
 // Faça a ordenação crescente de dois números usando a função calcular
 
+const ordenaPraGente = calcular(11,7, ordenar)
 
-
-
+console.log(`Colocados em ordem crescente os números 11 e 7: ${ordenaPraGente}`);
 
 
 
 // Volte nas funções e refatore-as na sintaxe ES6
 
 console.log('-----------------------------------------------------')
+
+
 // ----------------------------------------------
 console.log('Condicionais')
 
@@ -119,10 +107,13 @@ const n3 = 1
 
 // Verifique se a estudante foi aprovada. Se a média das notas for maior ou igual a 7, a estudante passou!
 
+const media = calcularMedia(n1, n2, n3) 
 
+console.log(media);
 
+const resultado = (media >= 7) ? 'Aprovado' : 'Reprovado'
 
-
+console.log(`O estudante foi ${resultado}`);
 
 
 console.log('-----------------------------------------------------')
@@ -144,10 +135,11 @@ const pokemon = {
 
 // Fazer destructuring e acessar os valores de objeto e pokemon
 
+const {nome, tipo, peso} = objeto
+console.log(`O objeto ${nome} é feito de ${tipo} e pesa ${peso} kg`);
 
-
-
-
+const {name, type, height} = pokemon
+console.log(`Capiturei o pokemom ${name} que tem tipo ${type} e tem altura de  ${height} cm`)
 
 
 console.log('-----------------------------------------------------')
@@ -159,31 +151,33 @@ console.log('Datas 🗓')
 
 // Vamos criar a variável chamada hoje que irá receber a data de hoje.
 
+const hoje = new Date()
 
-
-
-
+console.log(hoje);
 
 
 // Vamos capturar os valores de dia, mes e ano da data de hoje pelos métodos de Date
 
+const dia = hoje.getDate()
+const mes = hoje.getMonth()
+const ano = hoje.getFullYear()
 
-
-
+console.log(dia, mes, ano)
 
 
 
 // Vamos criar uma data específica. Lembrando que mês de Janeiro é 0 no Javascript 🤷🏻‍♀️
 
+const nascimento = new Date(1998, 0, 5)
 
-
-
+console.log(`Nasci em ${nascimento}`);
 
 
 
 // Podemos usar o método toLocaleString para formatar a data
 
-
+const dataFormatada = hoje.toLocaleDateString('pr-BR')
+console.log(dataFormatada);
 
 
 
@@ -192,9 +186,9 @@ console.log('Datas 🗓')
 // Temos mais opções para formatar a data
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
+const dataLonga = hoje.toLocaleDateString('pt-BR', options)
 
-
-
+console.log(dataLonga)
 
 
 
@@ -209,59 +203,56 @@ const pessoa = {
   peso: 55,
   andando: false,
   caminhouQuantosMetros: 0,
-}
-
-pessoa.fazerAniversario = function () {
-  return pessoa.idade++
-}
-
-pessoa.andar = function (metrosCaminhados) {
-  pessoa.andando = true
-  pessoa.caminhouQuantosMetros += metrosCaminhados
-}
-
-pessoa.parar = function () {
-  pessoa.andando = false
-}
-
-pessoa.nomeCompleto = function () {
-  return `Olá, meu nome é ${pessoa.nome} ${pessoa.sobrenome}.`
-}
-
-pessoa.mostrarIdade = function () {
-  return `Olá, eu tenho ${pessoa.idade} anos.`
-}
-
-pessoa.mostrarPeso = function () {
-  return `Eu peso ${pessoa.peso}.`
-}
-
-pessoa.mostrarAltura = function () {
-  return `Minha altura é ${pessoa.altura}.`
-}
-
-pessoa.mostrarDistancia = function () {
-  return `${pessoa.nome} caminhou ${pessoa.caminhouQuantosMetros}m.`
-}
-
-pessoa.apresentacao = function () {
-  let anos = 'anos'
-  let metros = 'metros'
-
-  if (pessoa.idade === 1) {
-    anos = 'ano'
+  fazerAniversario: () => pessoa.idade++,
+  andar: (metrosCaminhados) => {
+    pessoa.andando = true
+    pessoa.caminhouQuantosMetros += metrosCaminhados
+  },
+  parar: () => pessoa.andando = false,
+  apresentacao: () => {
+    const anos = (pessoa.idade === 1) ? 'ano' : 'anos'
+  
+    const metros = (pessoa.caminhouQuantosMetros <= 1) ? 'metro' : 'metros'
+  
+    return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, ${pessoa.altura}, meu peso é ${pessoa.peso} e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
   }
-
-  if (pessoa.caminhouQuantosMetros === 1) {
-    metros = 'metro'
-  }
-
-  return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, ${pessoa.altura}, meu peso é ${pessoa.peso} e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
 }
+
+pessoa.andar(200)
+
+console.log(pessoa.apresentacao());
 
 // Vamos utilizar o formato ES6 para refatorar a constante pessoa.
 
 // Quero criar as variáveis pessoa2 e pessoa3 com as mesmas propriedades, mas alterando os valores de nome, sobrenome, altura e peso
+
+const pessoa2 = {
+  nome: 'Contia',
+  sobrenome: 'Yamamoto',
+  idade: 35,
+  altura: 1.6,
+  peso: 56,
+  andando: false,
+  caminhouQuantosMetros: 0,
+  fazerAniversario: () => this.idade++,
+  andar: (metrosCaminhados) => {
+    this.andando = true
+    this.caminhouQuantosMetros += metrosCaminhados
+  },
+  parar: () => this.andando = false,
+  apresentacao: () => {
+    const anos = (this.idade === 1) ? 'ano' : 'anos'
+  
+    const metros = (this.caminhouQuantosMetros <= 1) ? 'metro' : 'metros'
+  
+    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura}, meu peso é ${this.peso} e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
+  }
+}
+
+pessoa2.andar(50)
+console.log(pessoa2.apresentacao())
+
+
 
 
 
