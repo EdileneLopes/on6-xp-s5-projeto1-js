@@ -1,0 +1,67 @@
+module.exports = {
+    produtos: [
+      {
+        id: 1,
+        nome: 'Álcool',
+        descricao: 'Àlcool 70º',
+        categoria: 'higiene',
+        preco: 9,
+      },
+      {
+        id: 2,
+        nome: 'Toalha',
+        descricao: 'Toalha de banho infantil',
+        categoria: 'casa',
+        preco: 89,
+      },
+      {
+        id: 3,
+        nome: 'Travesseiro diferente',
+        descricao: 'Travesseiro com gorro',
+        categoria: 'casa',
+        preco: 100,
+      },
+      {
+        id: 4,
+        nome: 'Manteiga',
+        descricao: 'Manteiga em tubo 50g',
+        categoria: 'alimento',
+        preco: 12,
+      },
+      {
+        id: 5,
+        nome: 'Suco Uva',
+        descricao: 'Suco de uva integral 1L',
+        categoria: 'bebida',
+        preco: 12,
+      },
+      {
+        id: 6,
+        nome: 'Fralda',
+        descricao: 'Fralda invisível para quando estiver se borrando de medo',
+        categoria: 'higiene',
+        preco: 23.30,
+      },
+      {
+        id: 7,
+        nome: 'Cheesecake de chocolate',
+        descricao: 'Cheesecake de chocolate',
+        categoria: 'alimento',
+        preco: 45,
+      },
+      {
+        id: 8,
+        nome: 'Cloro',
+        descricao: 'Água sanitária de 2L',
+        categoria: 'casa',
+        preco: 3.50,
+      },
+      {
+        id: 9,
+        nome: 'Cerveja Próxima',
+        descricao: 'Cerveja Artesanal - Próxima 500ml',
+        categoria: 'bebida',
+        preco: 7,
+      },
+    ],
+  }
