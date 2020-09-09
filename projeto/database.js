@@ -56,5 +56,20 @@ module.exports = {
       categoria: 'casa',
       preco: 3,
     },
+    {
+      id: 9,
+        nome: 'Travesseiro diferente',
+        descricao: 'Travesseiro com gorro',
+        categoria: 'casa',
+        preco: 100,
+    },
+    {
+        id: 10,
+        nome: 'Manteiga',
+        descricao: 'Manteiga em tubo 50g',
+        categoria: 'alimento',
+        preco: 12,
+    },
+
   ],
 }

@@ -214,7 +214,8 @@ const pessoa = {
   
     const metros = (pessoa.caminhouQuantosMetros <= 1) ? 'metro' : 'metros'
   
-    return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, ${pessoa.altura}, meu peso é ${pessoa.peso} e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
+    return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, 
+    ${pessoa.altura}, meu peso é ${pessoa.peso} e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
   }
 }
 
@@ -245,18 +246,14 @@ const pessoa2 = {
   
     const metros = (this.caminhouQuantosMetros <= 1) ? 'metro' : 'metros'
   
-    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura}, meu peso é ${this.peso} e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
+    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura}, 
+    meu peso é ${this.peso} e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
   }
 }
 
 
 pessoa2.andar(50)
 console.log(pessoa2.apresentacao())
-
-
-
-
-
 
 
 
@@ -329,8 +326,10 @@ console.log(terceiro);
 // Vamos importar esses dados para podermos usá-los durante nosso exercício de revisão.
 const db = require('./db')
 
+console.log('apresentando em varável ---------');
 console.log(db);
 
+console.log('Apresentando em Objeto =====');
 const {tias} = db
 console.log(tias);
 
@@ -412,8 +411,8 @@ console.log('sort()')
   }
 }
 
-// 9 e 2 -> retornar valor positivo --> 9-2 = 7
-// 2 e 5 -> retornar valor negativo --> 2-5 = -3
+// 9 e 2 -> retornar valor positivo --> 9-2 = 7 positivo
+// 2 e 5 -> retornar valor negativo --> 2-5 = -3 negativo
 // 2 e 2 -> retornar valor zero --> 2-2 = 0 */
 
 
