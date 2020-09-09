@@ -9,6 +9,9 @@ const bancoDados = require('./database')
 //fazendo desestruturação
 const {produtos} = bancoDados
 
+//declarando array de pedidos
+const listaPedidos = []
+
 
 //acessando a propriedade (preço) do array produtos e comparando-os
 produtos.sort((a, b) => a.preco - b.preco)
@@ -16,7 +19,8 @@ console.table(produtos)
 
 const read = require('readline-sync')
 
-const compra = () => {
+
+function compra() {
     const numId = parseInt(read.question('Por favor, informe o id do produto desejado: '))
     
     //função para encontrar id do produto
@@ -32,33 +36,42 @@ const compra = () => {
     // teste se a quantidade é menor ou igual a zero
     if(qtdade <= 0){
         console.log('Informe uma quantidade válida.')
-    } 
-
-   /*  let desejaComprarMais = read.question('Continuar comprando? Se sim digite 1, caso negativo 2:')
-
-    if (desejaComprarMais === 1) {
-        return compra()
-
-    } else if (desejaComprarMais === 2) {
-        const cupomDesconto = parseInt(read.question('Possui cupom de desconto? '))
-            if(cupomDesconto >= 15){
-                console.log('Cupom inválido')
-            }else {
-                console.log('Cupom válido!');
-            }
+    } else{
+        listaPedidos.push(numId)
     }
 
 
+    let desejaComprarMais = read.question('Continuar comprando? Se sim digite S, caso negativo N: ').toLowerCase
+
+    if (desejaComprarMais === 's') {
+        return compra()
+
+    } else if (desejaComprarMais === 'n') {
+        const cupomDesconto = parseInt(read.question('Possui cupom de desconto? '))
+        if(cupomDesconto >= 15) {
+            console.log('Cupom inválido')
+        }else {
+            console.log('Cupom válido!')
+        }
+    }
+    
 }
- */
+
 compra()
 
 
 
+// Vamos criar a classe Pessoa
 
-
-
-
-
-
-
+class Pedido{
+    constructor(list, coupun, request){
+      this.listaDosProdutos = list
+      this.cupom = coupun
+      this.pedido = request
+    }
+    
+  }
+  
+  const Pedido1 = new Pedido()
+  
+  console.log(Pedido)
