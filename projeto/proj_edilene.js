@@ -44,28 +44,25 @@ function compra() {
 
 }
       
-    
+//chamar função compra
 compra()
-console.log('Array lista de produtos: ', listaDeProdutos)
 
+class Pedido {
+    constructor(listaDeProdutos){
+      this.products = listaDeProdutos 
+      this.data = new Date()
+      this.subtotal = 0 // Guarda o resultado da função "calcularSubtotal"
+    }
+    //calculando o preço * quantidade de cada item das compras e no final retorna o 
+    //valor total dos itens bruto, ou seja sem desconto
 
+    calcularSubtotal() { 
+      this.subtotal = this.products.reduce((acumulador, item) => acumulador + (item.preco * item.quantidade), 0)
+    }
+  }
+ 
 const pedido = new Pedido (listaDeProdutos)// Joga o array com os push dentro da classe "Pedido"
 console.table(pedido.products) // Verificando se deu certo o array dentro da classe 
 
-
-
-// Vamos criar a classe Pessoa
-
-/* class Pedido{
-    constructor(list, coupun, request){
-      this.listaDosProdutos = list
-      this.cupom = coupun
-      this.pedido = request
-    }
-    
-  }
-  
-  const Pedido1 = new Pedido()
-  
-  console.log(Pedido)
- */
+pedido.calcularSubtotal() // chamando a função "calcularSubtotal"
+console.log(pedido.subtotal) 
