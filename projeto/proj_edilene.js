@@ -53,6 +53,7 @@ class Pedido {
       this.data = new Date()
       this.subtotal = 0 // Guarda o resultado da função "calcularSubtotal"
       this.discount = 0 // guarda o resultado da função 'calcular desconto'
+      this.total = 0 //guarda o valor total da compra
     }
     //calculando o preço * quantidade de cada item das compras e no final retorna o 
     //valor total dos itens bruto, ou seja sem desconto
@@ -62,8 +63,13 @@ class Pedido {
     }
 
     //preço apenas do desconto
-    calcularDesconto(){
+    calcularDesconto() {
         this.discount = (cupom > 0 && cupom <= 15) ? this.subtotal * (cupom / 100).toFixed(2) : 0
+    }
+    
+    //calculando o valor total menos o desconto
+    calcularTotal() {
+        this.total = this.subtotal - this.discount
     }
   }
 
@@ -80,4 +86,8 @@ const cupom = parseInt(read.question("Informe o valor do cupom de desconto: "))
 //- Chamar a função de desconto
 pedido.calcularDesconto()
 console.log(`Valor do desconto: R$ ${pedido.discount}`)
+
+//chamar função de valor total
+pedido.calcularTotal()
+console.log(`O valor total da comrpa é R$ ${pedido.total}`)
 
