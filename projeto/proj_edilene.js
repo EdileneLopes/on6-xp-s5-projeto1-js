@@ -52,6 +52,7 @@ class Pedido {
       this.products = listaDeProdutos 
       this.data = new Date()
       this.subtotal = 0 // Guarda o resultado da função "calcularSubtotal"
+      this.discount = 0 // guarda o resultado da função 'calcular desconto'
     }
     //calculando o preço * quantidade de cada item das compras e no final retorna o 
     //valor total dos itens bruto, ou seja sem desconto
@@ -59,10 +60,24 @@ class Pedido {
     calcularSubtotal() { 
       this.subtotal = this.products.reduce((acumulador, item) => acumulador + (item.preco * item.quantidade), 0)
     }
+
+    //preço apenas do desconto
+    calcularDesconto(){
+        this.discount = (cupom > 0 && cupom <= 15) ? this.subtotal * (cupom / 100).toFixed(2) : 0
+    }
   }
+
  
 const pedido = new Pedido (listaDeProdutos)// Joga o array com os push dentro da classe "Pedido"
 console.table(pedido.products) // Verificando se deu certo o array dentro da classe 
 
 pedido.calcularSubtotal() // chamando a função "calcularSubtotal"
 console.log(pedido.subtotal) 
+
+//- receber via entrada o cupom de desconto
+const cupom = parseInt(read.question("Informe o valor do cupom de desconto: ")) 
+
+//- Chamar a função de desconto
+pedido.calcularDesconto()
+console.log(`Valor do desconto: R$ ${pedido.discount}`)
+
