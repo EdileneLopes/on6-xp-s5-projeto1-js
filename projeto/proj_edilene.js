@@ -17,7 +17,7 @@ console.table(produtos)
 
 const read = require('readline-sync')
 
-novaLet = 0
+somaQtde = 0
 
 do {
   const numId = parseInt(read.question('Por favor, informe o id do produto desejado: '))
@@ -28,20 +28,18 @@ do {
   //função para encontrar id do produto
   let produtoEncontrado = produtos.find(elemento => elemento.id === numId)
 
-  //testar se a quantidade é positivo
-  if (qtdade <= 0) {
-    console.log('Informe uma quantidade válida.')
-  }
-
-  //testar se id existe
+  //testar se id existe  e se a quantidade é maior que zero
   if (produtoEncontrado === undefined) {
     console.log('Id não encontrado, digite novamente.')
   } else {
-    const produtoPedido = { ...produtoEncontrado, quantidade: qtdade } // se existir, vai para um array
-    listaDeProdutos.push(produtoPedido) //adiciona no array lista de produtos     
-    novaLet = novaLet + produtoPedido.quantidade
+    if (qtdade <= 0) {
+      console.log('Informe uma quantidade válida.')
+    } else {
+      const produtoPedido = { ...produtoEncontrado, quantidade: qtdade } // se existir, vai para um array
+      listaDeProdutos.push(produtoPedido) //adiciona no array lista de produtos     
+      somaQtde = somaQtde + produtoPedido.quantidade
+    }
   }
-
   confirmar = read.question('Continuar comprando? (S/N) ') //encerra a compra?
 } while (confirmar.toLowerCase() === 's')
 
@@ -71,13 +69,13 @@ class Pedido {
   calcularTotal() {
     this.total = this.subtotal - this.discount
   }
-  
+
 }
 
 const pedido = new Pedido(listaDeProdutos)// Joga o array com os push dentro da classe "Pedido"
 console.table(pedido.products) // Verificando se deu certo o array dentro da classe 
 
-console.log(`Você comprou ${novaLet} itens.`)
+console.log(`Você comprou ${somaQtde} itens.`)
 
 pedido.calcularSubtotal() // chamando a função "calcularSubtotal"
 console.log(`O subtotal do pedido é R$ `, pedido.subtotal)
